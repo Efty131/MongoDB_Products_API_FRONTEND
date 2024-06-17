@@ -1,10 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const UploadProduct = () => {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [image, setImage] = useState('');
+    const [productType, setProductType] = useState('');
     const [message, setMessage] = useState('');
+    const [uri, setUri] = useState(null);
+
+    useEffect(() => {
+        if (productType === 'indian') {
+            setUri('https://mongodb-products-api.onrender.com/api/routes/upload/indianProduct');
+        } else if (productType === 'upload') {
+            setUri('https://mongodb-products-api.onrender.com/upload');
+        } else {
+            setUri(null);
+        }
+
+        // Log the current state
+        console.log('Product Type:', productType);
+        console.log('URI:', uri);
+    }, [productType, uri]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -14,8 +30,13 @@ const UploadProduct = () => {
             return;
         }
 
+        if (uri === null) {
+            setMessage('Please select a product type');
+            return;
+        }
+
         try {
-            const response = await fetch('https://mongodb-products-api.onrender.com/upload', {
+            const response = await fetch(uri, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -30,6 +51,8 @@ const UploadProduct = () => {
                 setName('');
                 setDescription('');
                 setImage('');
+                setProductType('');
+                setUri(null);
             } else {
                 setMessage(data.message || 'Error uploading product');
             }
@@ -71,6 +94,31 @@ const UploadProduct = () => {
                         onChange={(e) => setImage(e.target.value)}
                         required
                     />
+                </div>
+                <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2">Product Type</label>
+                    <div>
+                        <label className="inline-flex items-center">
+                            <input
+                                type="checkbox"
+                                className="form-radio"
+                                value="indian"
+                                checked={productType === 'indian'}
+                                onChange={() => setProductType('indian')}
+                            />
+                            <span className="ml-2">Indian Product</span>
+                        </label>
+                        <label className="inline-flex items-center ml-4">
+                            <input
+                                type="checkbox"
+                                className="form-radio"
+                                value="upload"
+                                checked={productType === 'upload'}
+                                onChange={() => setProductType('upload')}
+                            />
+                            <span className="ml-2">Bangladeshi Product</span>
+                        </label>
+                    </div>
                 </div>
                 <button
                     type="submit"
