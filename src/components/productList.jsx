@@ -33,7 +33,7 @@ const ProductsList = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
                 {products.map(product => (
                     <div key={product.id} className="border border-gray-300 rounded-lg p-5 text-center">
-                        <h2 className="text-green-600 text-bold">{product.name}</h2>
+                        <h2 className="text-green-600 font-bold text-xl">{product.name}</h2>
                         <p className='text-xl'>{product.description}</p>
                         <img className="w-full max-w-xs mx-auto mt-2" src={product.image} alt={product.name} />
                     </div>
