@@ -1,50 +1,47 @@
+import { NavLink } from "react-router-dom";
+import { Menu, X, Search } from 'lucide-react';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { FaBars, FaTimes, FaSearch } from 'react-icons/fa';
+import NightMode from "./nightMode";
 
-function Nav() {
+const NavLinks = () => {
+  return (
+    <>
+    <NavLink to="/" className="mt-4 md:mt-0 md:ml-4">Home</NavLink>
+    <NavLink to="/upload" className="mt-4 md:mt-0 md:ml-4">Upload Product</NavLink>
+    <NavLink to="/indian" className="mt-4 md:mt-0 md:ml-4">Indian Products</NavLink>
+    <NavLink to="/search-products" className="mt-4 md:mt-0 md:ml-4"><Search /></NavLink>
+    </>
+  );
+};
+
+const nav = () => {
+
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleMenu = () => {
+  const toggleNavbar = () => {
     setIsOpen(!isOpen);
-  };
+  }
 
   return (
-    <nav className="bg-gray-800 p-4 relative z-20">
-      <div className="container mx-auto flex justify-between items-center">
-        <Link to="/" className="text-white text-lg font-semibold">
-          Store
-        </Link>
-        <div className="md:hidden"> 
-          <button onClick={toggleMenu} aria-expanded={isOpen} className="text-white focus:outline-none">
-            {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
-          </button>
-        </div>
-        <ul className={`md:flex space-x-4 ${isOpen ? 'block' : 'hidden md:flex'}`}>
-          <li>
-            <Link to="/" className="text-white hover:underline block py-2 px-4">
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link to="/upload" className="text-white hover:underline block py-2 px-4">
-              Upload Product
-            </Link>
-          </li>
-          <li>
-            <Link to="/indian" className="text-white hover:underline block py-2 px-4">
-              Indian Products
-            </Link>
-          </li>
-          <li>
-            <Link to="/search-products" className="text-white hover:underline block py-2 px-4">
-            <FaSearch className='inline' />
-            </Link>
-          </li>
-        </ul>
+   <>
+     <nav className="flex w-1/3 justify-end">
+      <div className="hidden w-full md:flex justify-between text text-stone-100 font-semibold">
+        <NightMode />
+        <NavLinks /> 
+      </div>
+      <div className="md:hidden">
+        <button onClick={toggleNavbar}>{isOpen ? <X color="#fff" /> : <Menu color="#fff" />}</button>
       </div>
     </nav>
-  );
+    {isOpen && (
+      <div className="flex basis-full flex-col items-center text-white font-medium">
+       <NavLinks />
+       <NightMode className="pt-mobileNavIcon" />
+       {/* mobileNavIcon is a custom class created on tailwind.config.js file */}
+      </div>
+  )}
+   </>
+  )
 }
 
-export default Nav;
+export default nav;

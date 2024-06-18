@@ -1,23 +1,17 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import { FaSearch, FaBars, FaTimes } from 'react-icons/fa';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ProductList from './components/productList';
 import UploadProduct from './components/UploadProducts';
 import IndianProductList from './components/IndianProductList';
 import SearchProducts from './components/searchProduct';
-import Nav from './components/nav';
+import Header from './components/Header';
 
 function App() {
-  const [isOpen, setIsOpen] = useState(false); // Track menu state
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
 
   return (
     <Router>
      
-      <Nav />
+      <Header />
       <div className="p-4 container mx-auto">
         <Routes>
           <Route path="/" element={<ProductList />} />
