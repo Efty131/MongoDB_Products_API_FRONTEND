@@ -5,8 +5,11 @@ const UploadProduct = () => {
     const [description, setDescription] = useState('');
     const [image, setImage] = useState('');
     const [productType, setProductType] = useState('');
+    const [category, setCategory] = useState('');
     const [message, setMessage] = useState('');
     const [uri, setUri] = useState(null);
+
+    const categories = ['Soft Drinks', 'Tea', 'Water', 'Juice', 'Powdered Drink Mixes', 'Soap', 'Handwash'];
 
     useEffect(() => {
         if (productType === 'indian') {
@@ -25,7 +28,7 @@ const UploadProduct = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!name || !description || !image) {
+        if (!name || !description || !image || !category) {
             setMessage('Please fill in all required fields');
             return;
         }
@@ -35,13 +38,18 @@ const UploadProduct = () => {
             return;
         }
 
+        const productData = { name, description, image, category };
+
+        // Log the data before sending
+        console.log('Submitting: ', productData);
+
         try {
             const response = await fetch(uri, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ name, description, image }),
+                body: JSON.stringify(productData),
             });
 
             const data = await response.json();
@@ -52,6 +60,7 @@ const UploadProduct = () => {
                 setDescription('');
                 setImage('');
                 setProductType('');
+                setCategory('');
                 setUri(null);
             } else {
                 setMessage(data.message || 'Error uploading product');
@@ -96,12 +105,28 @@ const UploadProduct = () => {
                     />
                 </div>
                 <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2">Category</label>
+                    <select
+                        className="w-full p-2 border border-gray-300 rounded text-green-600 focus:text-blue-600"
+                        value={category}
+                        onChange={(e) => setCategory(e.target.value)}
+                        required
+                    >
+                        <option value="">Select a category</option>
+                        {categories.map((cat) => (
+                            <option key={cat} value={cat}>
+                                {cat}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+                <div className="mb-4">
                     <label className="block text-sm font-medium mb-2">Product Type</label>
                     <div>
                         <label className="inline-flex items-center">
                             <input
                                 type="checkbox"
-                                className="form-radio"
+                                className="form-checkbox"
                                 value="indian"
                                 checked={productType === 'indian'}
                                 onChange={() => setProductType('indian')}
@@ -111,7 +136,7 @@ const UploadProduct = () => {
                         <label className="inline-flex items-center ml-4">
                             <input
                                 type="checkbox"
-                                className="form-radio"
+                                className="form-checkbox"
                                 value="upload"
                                 checked={productType === 'upload'}
                                 onChange={() => setProductType('upload')}

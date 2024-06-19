@@ -6,6 +6,7 @@ import IndianProductList from './components/IndianProductList';
 import SearchProducts from './components/searchProduct';
 import Header from './components/Header';
 import UpdateProduct from './components/updateProduct';
+import Category from './components/Category';
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
           <Route path="/upload" element={<UploadProduct />} />
           <Route path="/search-products" element={<SearchProducts />} />
           <Route path="/update-products" element={<UpdateProduct />} />
+          <Route path="/category" element={<Category />} /> 
         </Routes>
       </div>
     </Router>

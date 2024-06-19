@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const ProductsList = () => {
+const ProductsList = ({ category }) => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -8,12 +8,15 @@ const ProductsList = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('https://mongodb-products-api.onrender.com/api/routes');
+                const response = await fetch(category 
+                    ? `https://mongodb-products-api.onrender.com/api/routes/category/${encodeURIComponent(category)}`
+                    : 'https://mongodb-products-api.onrender.com/api/routes'
+                );
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
                 const data = await response.json();
-                setProducts(data);
+                setProducts(data.products || data);
                 setLoading(false);
             } catch (err) {
                 setError(err);
@@ -22,7 +25,7 @@ const ProductsList = () => {
         };
 
         fetchData();
-    }, []);
+    }, [category]);
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error: {error.message}</p>;
