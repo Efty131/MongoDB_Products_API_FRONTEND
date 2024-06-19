@@ -5,6 +5,7 @@ import UploadProduct from './components/UploadProducts';
 import IndianProductList from './components/IndianProductList';
 import SearchProducts from './components/searchProduct';
 import Header from './components/Header';
+import UpdateProduct from './components/updateProduct';
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
           <Route path="/indian" element={<IndianProductList />} />
           <Route path="/upload" element={<UploadProduct />} />
           <Route path="/search-products" element={<SearchProducts />} />
+          <Route path="/update-products" element={<UpdateProduct />} />
         </Routes>
       </div>
     </Router>
