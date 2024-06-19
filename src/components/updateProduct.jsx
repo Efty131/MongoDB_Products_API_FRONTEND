@@ -56,7 +56,7 @@ const UpdateProduct = () => {
         value={productName}
         onChange={(e) => setProductName(e.target.value)}
         placeholder="Enter product name"
-        className="border p-2 mb-4 w-full"
+        className="border p-2 mb-4 w-full text-blue-600 focus:text-green-600"
       />
       <button onClick={handleSearch} className="bg-blue-500 text-white p-2 mb-4">Search</button>
 
@@ -74,21 +74,21 @@ const UpdateProduct = () => {
             value={updatedData.name}
             onChange={(e) => setUpdatedData({ ...updatedData, name: e.target.value })}
             placeholder="New name"
-            className="border p-2 mb-4 w-full expand-cursor"
+            className="border p-2 mb-4 w-full expand-cursor text-blue-600 focus:text-green-600"
           />
           <input
             type="text"
             value={updatedData.description}
             onChange={(e) => setUpdatedData({ ...updatedData, description: e.target.value })}
             placeholder="New description"
-            className="border p-2 mb-4 w-full"
+            className="border p-2 mb-4 w-full text-blue-600 focus:text-green-600"
           />
           <input
             type="text"
             value={updatedData.image}
             onChange={(e) => setUpdatedData({ ...updatedData, image: e.target.value })}
             placeholder="New image URL"
-            className="border p-2 mb-4 w-full"
+            className="border p-2 mb-4 w-full text-blue-600 focus:text-green-600"
           />
           <button onClick={handleUpdate} className="bg-green-500 text-white p-2">Update</button>
         </div>

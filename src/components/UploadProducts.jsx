@@ -70,7 +70,7 @@ const UploadProduct = () => {
                     <label className="block text-sm font-medium mb-2">Product Name</label>
                     <input
                         type="text"
-                        className="w-full p-2 border border-gray-300 rounded"
+                        className="w-full p-2 border border-gray-300 rounded focus:text-blue-600 text-green-600"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         required
@@ -79,7 +79,7 @@ const UploadProduct = () => {
                 <div className="mb-4">
                     <label className="block text-sm font-medium mb-2">Description</label>
                     <textarea
-                        className="w-full p-2 border border-gray-300 rounded"
+                        className="w-full p-2 border border-gray-300 rounded text-green-600 focus:text-blue-600"
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                         required
@@ -89,7 +89,7 @@ const UploadProduct = () => {
                     <label className="block text-sm font-medium mb-2">Image URL</label>
                     <input
                         type="text"
-                        className="w-full p-2 border border-gray-300 rounded"
+                        className="w-full p-2 border border-gray-300 rounded text-green-600 focus:text-blue-600"
                         value={image}
                         onChange={(e) => setImage(e.target.value)}
                         required
