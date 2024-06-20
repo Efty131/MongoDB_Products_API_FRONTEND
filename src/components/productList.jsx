@@ -7,6 +7,9 @@ const ProductsList = ({ category }) => {
 
     useEffect(() => {
         const fetchData = async () => {
+            setLoading(true);
+            setError(null);
+
             try {
                 const response = await fetch(category 
                     ? `https://mongodb-products-api.onrender.com/api/routes/category/${encodeURIComponent(category)}`
@@ -17,9 +20,9 @@ const ProductsList = ({ category }) => {
                 }
                 const data = await response.json();
                 setProducts(data.products || data);
-                setLoading(false);
             } catch (err) {
                 setError(err);
+            } finally {
                 setLoading(false);
             }
         };
@@ -33,7 +36,7 @@ const ProductsList = ({ category }) => {
     return (
         <div>
             <h1 className="text-center text-5xl pb-8 pt-8">Products List</h1>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
                 {products.map(product => (
                     <div key={product.id} className="border border-gray-300 rounded-lg p-5 text-center">
                         <h2 className="text-green-600 font-bold text-xl">{product.name}</h2>

@@ -9,7 +9,7 @@ const Category = () => {
     return (
         <div className="max-w-4xl mx-auto p-4">
             <CategoryList categories={categories} onSelectCategory={setSelectedCategory} />
-            <ProductsList category={selectedCategory} />
+            {selectedCategory && <ProductsList category={selectedCategory} />}
         </div>
     );
 };

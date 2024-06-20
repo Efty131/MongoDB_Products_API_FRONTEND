@@ -9,9 +9,9 @@ const NavLinks = () => {
       <NavLink to="/" className="mt-4 md:mt-0 md:ml-4">Home</NavLink>
       <NavLink to="/upload" className="mt-4 md:mt-0 md:ml-4">Upload</NavLink>
       <NavLink to="/indian" className="mt-4 md:mt-0 md:ml-4">Indian</NavLink>
-      <NavLink to="/update-products" className="mt-4 md:mt-0 md:ml-4">Update Product</NavLink>
-      <NavLink to="/search-products" className="mt-4 md:mt-0 md:ml-4"><Search /></NavLink>
+      <NavLink to="/update-products" className="mt-4 md:mt-0 md:ml-4">Update</NavLink>
       <NavLink to="/category" className="mt-4 md:mt-0 md:ml-4">Category</NavLink> {/* Add the Category link */}
+      <NavLink to="/search-products" className="mt-4 md:mt-0 md:ml-4"><Search /></NavLink>
     </>
   );
 };

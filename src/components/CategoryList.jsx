@@ -2,19 +2,16 @@ import React from 'react';
 
 const CategoryList = ({ categories, onSelectCategory }) => {
     return (
-        <div className="category-list">
-            <h2 className="text-xl font-bold mb-4">Categories</h2>
-            <ul>
-                {categories.map((category) => (
-                    <li
-                        key={category}
-                        className="cursor-pointer text-blue-600 hover:text-blue-800 mb-2"
-                        onClick={() => onSelectCategory(category)}
-                    >
-                        {category}
-                    </li>
-                ))}
-            </ul>
+        <div className="flex flex-wrap gap-4 mb-8">
+            {categories.map(category => (
+                <button
+                    key={category}
+                    onClick={() => onSelectCategory(category)}
+                    className="px-4 py-2 border border-gray-300 rounded bg-gray-100 hover:bg-gray-200 focus:outline-none text-green-600 hover:text-blue-600 font-semibold"
+                >
+                    {category}
+                </button>
+            ))}
         </div>
     );
 };

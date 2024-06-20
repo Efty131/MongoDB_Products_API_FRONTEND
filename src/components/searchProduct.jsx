@@ -50,7 +50,7 @@ const SearchProducts = () => {
                     <label className="block text-sm font-medium mb-2">Search</label>
                     <input
                         type="text"
-                        className="w-full p-2 border border-gray-300 rounded"
+                        className="w-full p-2 border border-gray-300 rounded focus:text-green-600 text-blue-600" 
                         value={query}
                         onChange={(e) => setQuery(e.target.value)}
                         required
