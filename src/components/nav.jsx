@@ -11,6 +11,8 @@ const NavLinks = () => {
       <NavLink to="/indian" className="mt-4 md:mt-0 md:ml-4">Indian</NavLink>
       <NavLink to="/update-products" className="mt-4 md:mt-0 md:ml-4">Update</NavLink>
       <NavLink to="/category" className="mt-4 md:mt-0 md:ml-4">Category</NavLink> {/* Add the Category link */}
+      <NavLink to="/post" className="mt-4 md:mt-0 md:ml-4">Post</NavLink>
+      <NavLink to="/sign-in-and-post" className="mt-4 md:mt-0 md:ml-4">Sign</NavLink>
       <NavLink to="/search-products" className="mt-4 md:mt-0 md:ml-4"><Search /></NavLink>
     </>
   );
