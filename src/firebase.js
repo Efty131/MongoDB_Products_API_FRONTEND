@@ -2,16 +2,13 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
-console.log('Firebase API Key:', process.env.REACT_APP_FIREBASE_API_KEY);
-console.log('Firebase Auth Domain:', process.env.REACT_APP_FIREBASE_AUTH_DOMAIN);
-
 const firebaseConfig = {
-  apiKey: "AIzaSyA9WSQ1StcQg_67Vs1wWzuNlCy6cIaEK4E",
-  authDomain: "store-mern.firebaseapp.com",
-  projectId: "store-mern",
-  storageBucket: "store-mern.appspot.com", 
-  messagingSenderId: "63247474483",  
-  appId: "1:63247474483:web:dfd25507b77d4692d62846"  
+  apiKey: import.meta.env.VITE_REACT_APP_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_REACT_APP_FIREBASE_APP_ID, 
 };
 
 // Initialize Firebase
