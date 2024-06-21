@@ -21,7 +21,7 @@ function App() {
   return (
     <Router>
       <Header />
-      <div className="p-4 container mx-auto">
+      <div className="p-4 container mx-auto dark-mode-transition">
         <Routes>
           <Route path="/" element={<ProductList />} />
           <Route path="/indian" element={<IndianProductList />} />
