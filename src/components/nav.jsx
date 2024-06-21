@@ -1,7 +1,9 @@
-import { NavLink } from "react-router-dom";
-import { Menu, X, Search } from 'lucide-react';
+// Nav.jsx
+
 import React, { useState } from 'react';
-import NightMode from "./nightMode";
+import { NavLink } from 'react-router-dom';
+import { Menu, X, Search } from 'lucide-react';
+import NightMode from './nightMode';
 
 const NavLinks = () => {
   return (
@@ -10,9 +12,8 @@ const NavLinks = () => {
       <NavLink to="/upload" className="mt-4 md:mt-0 md:ml-4">Upload</NavLink>
       <NavLink to="/indian" className="mt-4 md:mt-0 md:ml-4">Indian</NavLink>
       <NavLink to="/update-products" className="mt-4 md:mt-0 md:ml-4">Update</NavLink>
-      <NavLink to="/category" className="mt-4 md:mt-0 md:ml-4">Category</NavLink> {/* Add the Category link */}
-      <NavLink to="/post" className="mt-4 md:mt-0 md:ml-4">Post</NavLink>
-      <NavLink to="/sign-in-and-post" className="mt-4 md:mt-0 md:ml-4">Sign</NavLink>
+      <NavLink to="/category" className="mt-4 md:mt-0 md:ml-4">Category</NavLink>
+      <NavLink to="/posts" className="mt-4 md:mt-0 md:ml-4">Posts</NavLink>
       <NavLink to="/search-products" className="mt-4 md:mt-0 md:ml-4"><Search /></NavLink>
     </>
   );
@@ -23,7 +24,7 @@ const Nav = () => {
 
   const toggleNavbar = () => {
     setIsOpen(!isOpen);
-  }
+  };
 
   return (
     <>
@@ -45,6 +46,6 @@ const Nav = () => {
       )}
     </>
   );
-}
+};
 
 export default Nav;

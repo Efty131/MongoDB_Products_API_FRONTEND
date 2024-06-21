@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ProductList from './components/productList';
 import UploadProduct from './components/UploadProducts';
@@ -8,16 +8,8 @@ import Header from './components/Header';
 import UpdateProduct from './components/updateProduct';
 import Category from './components/Category';
 import Post from './components/post';
-import SignInAndPost from './components/signInAndPost';
 
 function App() {
-  const [userUid, setUserUid] = useState(null);
-
-  const handleSignIn = (objectId) => {
-    setUserUid(objectId); // Set the MongoDB ObjectId
-    console.log('Received MongoDB ObjectId:', objectId); // Print the ObjectId
-  };
-
   return (
     <Router>
       <Header />
@@ -28,12 +20,8 @@ function App() {
           <Route path="/upload" element={<UploadProduct />} />
           <Route path="/search-products" element={<SearchProducts />} />
           <Route path="/update-products" element={<UpdateProduct />} />
-          <Route path="/category" element={<Category />} /> 
-          <Route path="/post" element={<Post />} /> 
-          <Route
-            path="/sign-in-and-post"
-            element={<SignInAndPost onSignIn={handleSignIn} uid={userUid} />}
-          />
+          <Route path="/category" element={<Category />} />
+          <Route path="/posts" element={<Post />} /> {/* Add this route for Post component */}
         </Routes>
       </div>
     </Router>
